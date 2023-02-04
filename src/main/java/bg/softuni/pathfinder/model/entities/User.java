@@ -3,12 +3,13 @@ package bg.softuni.pathfinder.model.entities;
 import bg.softuni.pathfinder.model.entities.enums.Level;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
 
 
     @Id
@@ -26,7 +27,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-//    private String email;
+    private String email;
 
     @Enumerated(EnumType.STRING)
     @ManyToMany
@@ -37,6 +38,7 @@ public class User {
 
     public User() {
         this.roles = new HashSet<>();
+
     }
 
     public long getId() {
@@ -99,6 +101,20 @@ public class User {
 
     public User setLevel(Level level) {
         this.level = level;
+        return this;
+    }
+
+    public User setAge(Integer age) {
+        this.age = age;
+        return this;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public User setEmail(String email) {
+        this.email = email;
         return this;
     }
 }

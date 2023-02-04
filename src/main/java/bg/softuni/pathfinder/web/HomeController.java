@@ -21,7 +21,7 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model){
 
-        Route route = routeService.getMostCommented().get(0);
+        Route route = routeService.getMostCommented().get().get(0);
         model.addAttribute("mostCommented", route);
 
         return "index";
